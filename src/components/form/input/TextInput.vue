@@ -2,7 +2,8 @@
   <input
     type="text"
     :name="name"
-    v-model="text"
+    :value="modelValue"
+    @input="update($event.target.value)"
     class="form-control"
     :class="[ 
       { 'is-valid' : valid },
@@ -14,7 +15,6 @@
     :placeholder="placeholder"
     :disabled="disabled" 
     :readonly="readonly"
-    @input="update()"
     :aria-describedby="describedby()"
   />
   <small v-if="hint" class="form-hint" :id="describedby()">{{ hint }}</small>
@@ -27,7 +27,7 @@ export default {
   props: {
     placeholder: { default: '', type: String },
     name: { default: 'text', type: String },
-    value: { default: '', type: String },
+    modelValue: { default: '', type: String },
     disabled: { default: false, type: Boolean },
     readonly: { default: false, type: Boolean },
     valid: { default: false, type: Boolean },
@@ -41,14 +41,10 @@ export default {
   data: () => ({
     text: ''
   }),
-  watch: { 
-    value: function() {
-      this.text = this.value
-    }
-  },
   methods: {
-    update () {
-      this.$emit('input', this.text)
+    update ($value) {
+      this.text = $value
+      this.$emit('update:modelValue', this.text)
     },
     describedby() {
       if(this.hint) return this.name + '_help'
@@ -56,7 +52,8 @@ export default {
     }
   },
   mounted() {
-    this.text = this.value
+    this.text = this.modelValue
+    this.$emit('update:modelValue', this.text)
   }
 }
 </script>

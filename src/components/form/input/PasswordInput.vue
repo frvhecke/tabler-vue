@@ -2,7 +2,8 @@
   <input 
     type="password"
     :name="name"
-    v-model="password"
+    :value="modelValue"
+    @input="update($event.target.value)"
     class="form-control"
     :class="[ 
       { 'is-valid' : valid },
@@ -14,7 +15,6 @@
     :placeholder="placeholder"
     :disabled="disabled"
     :readonly="readonly"
-    @input="update()"
     :aria-describedby="describedby()"
   >
   <small v-if="hint" class="form-hint" :id="describedby()">{{ hint }}</small>
@@ -27,7 +27,7 @@ export default {
   props: {
     placeholder: { default: '', type: String },
     name: { default: 'password', type: String },
-    value: { default: '', type: String },
+    modelValue: { default: '', type: String },
     disabled: { default: false, type: Boolean },
     readonly: { default: false, type: Boolean },
     valid: { default: false, type: Boolean },
@@ -42,8 +42,9 @@ export default {
     password: ''
   }),
   methods: {
-    update () {
-      this.$emit('input', this.password)
+    update ($value) {
+      this.password = $value
+      this.$emit('update:modelValue', this.password)
     },
     describedby() {
       if(this.hint) return this.name + '_help'
@@ -51,7 +52,8 @@ export default {
     }
   },
   mounted() {
-    this.password = this.value
+    this.password = this.modelValue
+    this.$emit('update:modelValue', this.password)
   }
 }
 </script>
