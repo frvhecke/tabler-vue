@@ -1,7 +1,7 @@
 <template>
   <select class="form-select" @input="update($event.target.value)">
     <option
-      v-for="item in values"
+      v-for="item in options"
       :key="item.value"
       :value="item.value"
       :selected="selected(item.value)"
@@ -19,7 +19,7 @@ export default {
   props: {
     placeholder: { default: '', type: String },
     name: { default: 'text', type: String },
-    values: { default() { return {} }, type: Object },
+    options: { default() { return {} }, type: Object },
     modelValue: { default: '', type: String },
     disabled: { default: false, type: Boolean },
     readonly: { default: false, type: Boolean },
