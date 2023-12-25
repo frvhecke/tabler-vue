@@ -21,7 +21,7 @@ export default {
   props: {
     left: { default: false, type: Boolean },
     right: { default: false, type: Boolean },
-    icon: { default: false, type: Boolean },
+    icon: { default: '', type: String },
     icon_color: { default: '', type: String },
   }
 }
