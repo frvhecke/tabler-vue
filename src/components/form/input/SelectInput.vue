@@ -40,12 +40,10 @@ export default {
       this.$emit('update:modelValue', this.value)
     },
     describedby() {
-      if(this.hint) return this.name + '_help'
-      else return null
+      return this.hint ? this.name + '_help' : null
     },
     selected ($value) {
-      if(this.value === $value) return true
-      else return null
+      return this.value === $value ? true : null
     }
   },
   mounted() {

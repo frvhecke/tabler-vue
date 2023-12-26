@@ -47,8 +47,7 @@ export default {
       this.$emit('update:modelValue', this.password)
     },
     describedby() {
-      if(this.hint) return this.name + '_help'
-      else return null
+      return this.hint ? this.name + '_help' : null
     }
   },
   mounted() {

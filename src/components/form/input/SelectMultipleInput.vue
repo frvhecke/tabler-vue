@@ -1,5 +1,5 @@
 <template>
-  <select class="form-select" v-model="value" @change="update($event.target.value)" multiple>
+  <select class="form-select" v-model="value" @change="update()" multiple>
     <option
       v-for="item in options"
       :key="item.value"
@@ -35,17 +35,15 @@ export default {
     value: []
   }),
   methods: {
-    update ($value) {
+    update () {
       if(!Array.isArray(this.value)) this.value = new Array(this.value)
       this.$emit('update:modelValue', JSON.stringify(this.value))
     },
     describedby() {
-      if(this.hint) return this.name + '_help'
-      else return null
+      return this.hint ? this.name + '_help' : null
     },
     selected ($value) {
-      if(this.value === $value) return true
-      else return null
+      return this.value === $value ? true : null
     }
   },
   mounted() {
