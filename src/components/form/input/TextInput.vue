@@ -14,7 +14,9 @@
       { 'form-control-flush' : flush },
       { 'text-end' : text_end },
       { 'mb-2' : mb2 },
-      { 'mb-3' : mb3 } ]"
+      { 'mb-3' : mb3 },
+      { 'ps-0' : ps0 },
+      { 'pe-0' : pe0 } ]"
     :placeholder="placeholder"
     :disabled="disabled" 
     :readonly="readonly"
@@ -43,6 +45,8 @@ export default {
     feedback: { default: '', type: String },
     mb2: { default: false, type: Boolean },
     mb3: { default: false, type: Boolean },
+    ps0: { default: false, type: Boolean },
+    pe0: { default: false, type: Boolean },
   },
   data: () => ({
     text: ''
