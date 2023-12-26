@@ -1,5 +1,5 @@
 <template>
-  <div :class="[ class_col_sm, class_col_md, class_col_lg, class_col_xl, class_col_xxl, class_col_sm_auto, class_col_md_auto, class_col_lg_auto, class_col_xl_auto, class_col_xxl_auto, class_col_x, class_col_sm_x, class_col_md_x, class_col_lg_x, class_col_xl_x, class_col_xxl_x, class_mb, class_py, getBackgroundColor() ]">
+  <div :class="[ class_col, class_col_sm, class_col_md, class_col_lg, class_col_xl, class_col_xxl, class_col_sm_auto, class_col_md_auto, class_col_lg_auto, class_col_xl_auto, class_col_xxl_auto, class_col_x, class_col_sm_x, class_col_md_x, class_col_lg_x, class_col_xl_x, class_col_xxl_x, class_mb, class_py, getBackgroundColor() ]">
     <slot></slot>
   </div>
 </template>
@@ -31,6 +31,9 @@ export default {
     bg_color: { default: undefined, type: String }
   },
   computed: {
+    class_col () {
+      return (!this.col_sm && !this.col_md && !this.col_lg && !this.col_xl && !this.col_xxl && !this.col_sm_auto && !this.col_md_auto && !this.col_lg_auto && !this.col_xl_auto && !this.col_xxl_auto && this.col_x == 0 && this.col_sm_x == 0 && this.col_md_x == 0 && this.col_lg_x == 0 && this.col_xl_x == 0 && this.col_xxl_x == 0) ? 'col' : ''
+    },
     class_col_sm () {
       return this.col_sm ? 'col-sm' : ''
     },
