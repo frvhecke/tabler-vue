@@ -12,6 +12,7 @@
       { 'is-invalid-lite' : invalid && lite},
       { 'form-control-rounded' : rounded },
       { 'form-control-flush' : flush },
+      { 'text-end' : text_end },
       { 'mb-2' : mb2 },
       { 'mb-3' : mb3 } ]"
     :placeholder="placeholder"
@@ -39,6 +40,7 @@ export default {
     flush: { default: false, type: Boolean },
     hint: { default: '', type: String },
     feedback: { default: '', type: String },
+    text_end: { default: false, type: Boolean },
     mb2: { default: false, type: Boolean },
     mb3: { default: false, type: Boolean },
   },
