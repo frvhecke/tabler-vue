@@ -68,3 +68,13 @@ export function getBackgroundColor(color, light = false) {
     return ''
   }
 }
+
+/**
+ * Translate color string into alert color class
+ * 
+ * @param   color       Color string to be translated
+ * @return  String      Alert color matching the color string (or empty of color unknown)
+ */
+export function getAlertColor(color) {
+  return colors.includes(color) ? 'alert-' + color : ''
+}
