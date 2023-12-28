@@ -1,7 +1,10 @@
 <template>
   <a class="btn" :class="[ { disabled: disabled }, { 'active': active }, getColor(), { 'w-100' : full_width }, { 'btn-icon' : !text } ]" @click="click" :title="tooltip">
     <TablerIcon v-if="icon" :icon="icon" :color="icon_color"/>
-    <span v-if="text">{{ text }}</span>
+    <span v-if="text">
+      {{ text }}
+      <slot></slot>
+    </span>
   </a>
 </template>
 
