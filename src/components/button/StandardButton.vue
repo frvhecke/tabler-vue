@@ -22,7 +22,7 @@ export default {
     tooltip: { default: '', type: String },
     active: { default: false, type: Boolean },
     disabled: { default: false, type: Boolean },
-    color: { default: 'primary', type: String },
+    color: { default: '', type: String },
     icon: { default: '', type: String },
     icon_color: { default: '', type: String },
     full_width: { default: false, type: Boolean },
